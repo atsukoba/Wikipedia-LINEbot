@@ -44,7 +44,7 @@ def encode(page: "wikipedia.wikipedia.WikipediaPage", threshold=1500) -> str:
     if len(summary) > threshold:
         summary = summary[:threshold] + "..."
 
-    return f"Result: {page.title}\n\n{page.summary}\n\n{page.url}"
+    return f"Result: {page.title}\n\n{summary}\n\n{page.url}"
 
 
 def answer(text: str) -> str:
