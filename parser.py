@@ -8,7 +8,14 @@ wikipedia.set_lang(lang)
 
 def tokenize(text: str) -> list:
     """Tokenize input Sentence to list of word"""
-    return text.split()
+    splited = text.split()
+    if len(splited) == 1:
+        return splited
+    elif len(splited) == 2:
+        change_lang(splited[0])
+        return splited[1]
+    else:
+        pass
 
 
 def search(text: str, rank=0) -> "wikipedia.wikipedia.WikipediaPage":
@@ -32,13 +39,15 @@ def encode(page: "wikipedia.wikipedia.WikipediaPage") -> str:
 
 
 def answer(text: str) -> str:
-    page = search(text)
+    word = tokenize(text)
+    page = search(word)
     return encode(page)
 
 
 def change_lang(language: str) -> None:
     global lang
     lang = language
+    wikipedia.set_lang(lang)
     return
 
 
