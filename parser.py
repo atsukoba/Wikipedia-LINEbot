@@ -20,8 +20,7 @@ def tokenize(text: str) -> list:
             change_lang(splited[0])
         return splited[1]
     else:
-        pass
-
+        usage()
 
 def search(text: str, rank=0) -> "wikipedia.wikipedia.WikipediaPage":
     """Search Wikipedia page by Word
@@ -58,6 +57,8 @@ def change_lang(language: str) -> None:
     wikipedia.set_lang(language)
     return
 
+def usage():
+    pass
 
 if __name__ == "__main__":
     import argparse
