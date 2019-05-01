@@ -18,7 +18,11 @@ def search(text: str, rank=0) -> "wikipedia.wikipedia.WikipediaPage":
     ---
     rank : int : Return the contents of the search result of the set rank.
     """
-    return wikipedia.page(wikipedia.search(text)[rank])
+    try:
+        page = wikipedia.page(wikipedia.search(text)[rank]
+    except wikipedia.DisambiguationError:
+        page = wikipedia.page(wikipedia.search(text)[rank+1]
+    return page
 
 
 def encode(page: "wikipedia.wikipedia.WikipediaPage") -> str:
