@@ -37,9 +37,13 @@ def search(text: str, rank=0) -> "wikipedia.wikipedia.WikipediaPage":
     return page
 
 
-def encode(page: "wikipedia.wikipedia.WikipediaPage") -> str:
+def encode(page: "wikipedia.wikipedia.WikipediaPage", threshold=1500) -> str:
     """Transform data into the text for LINE message
     """
+    summary = page.summary
+    if len(summary) > threshold:
+        summary = summary[:threshold] + "..."
+
     return f"Result: {page.title}\n\n{page.summary}\n\n{page.url}"
 
 
