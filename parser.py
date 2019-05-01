@@ -21,7 +21,7 @@ def search(text: str, rank=0) -> "wikipedia.wikipedia.WikipediaPage":
     try:
         page = wikipedia.page(wikipedia.search(text)[rank])            
     except wikipedia.exceptions.DisambiguationError:
-        page = wikipedia.page(wikipedia.search(text)[rank+1]
+        page = wikipedia.page(wikipedia.search(text)[rank+1])
     return page
 
 
